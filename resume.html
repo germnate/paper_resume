@@ -10,22 +10,43 @@
       --primary-color: #0472C3;
       --secondary-color: #EDF6FD;
       --border-color: #b5b5b5;
+      --background-color: #ffffff;
+      --secondary-background-color: #ffffff;
+      --text-color: #3e3e3e;
+      --link-color: #2256ff;
 
       --light-primary-color: #0472C3;
       --light-secondary-color: #EDF6FD;
       --light-border-color: #b5b5b5;
+      --light-background-color: #ffffff;
+      --light-secondary-background-color: #ffffff;
+      --light-text-color: #3e3e3e;
+      --light-link-color: #2256ff;
+      ;
 
       --dark-primary-color: #00c181;
-      --dark-secondary-color: #5b5b5b;
+      --dark-secondary-color: #414141;
       --dark-border-color: #50f8bd;
+      --dark-background-color: #606060;
+      --dark-secondary-background-color: #393939;
+      --dark-text-color: #d4d4d4;
+      --dark-link-color: #ec7e2f;
     }
 
     body {
       display: flex;
       flex-direction: column;
-      margin-top: 6rem;
+      margin-top: 1rem;
       align-items: center;
       font-family: Sans-Serif;
+      background-color: var(--secondary-background-color);
+      color: var(--text-color);
+      transition: all;
+      transition-duration: 500ms;
+    }
+
+    .paper {
+      background-color: transparent;
     }
 
     .dark-mode-container {
@@ -48,7 +69,12 @@
 
     header {
       padding-bottom: 0.2in;
-      border-bottom: 1px solid var(--border-color)
+      border-bottom: 1px solid var(--border-color);
+      border-color: var(--border-color);
+    }
+
+    a {
+      color: var(--link-color);
     }
 
     h1,
@@ -60,6 +86,7 @@
     }
 
     h3 {
+      color: var(--primary-color);
       background-color: var(--secondary-color);
       padding: 3px;
       margin-bottom: 0;
@@ -100,11 +127,17 @@
     }
 
     @media (min-width:940px) {
+      body {
+        margin-top: 6rem;
+        background-color: var(--background-color);
+      }
+
       .dark-mode-container {
         width: 8.5in;
       }
 
       .paper {
+        background-color: var(--secondary-background-color);
         width: 8in;
         height: 10.4in;
         box-shadow: 0px 1px 8px var(--border-color);
@@ -239,7 +272,7 @@
 
 <body>
   <div class='dark-mode-container'>
-    <a class='dark-mode-button' onclick='toggleDarkMode();'>
+    <a class='dark-mode-button'>
       <div class="sun-container">
         <svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="5" stroke="#1C274C" stroke-width="1.5" />
@@ -257,7 +290,7 @@
         <svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M21.0672 11.8568L20.4253 11.469L21.0672 11.8568ZM12.1432 2.93276L11.7553 2.29085V2.29085L12.1432 2.93276ZM21.25 12C21.25 17.1086 17.1086 21.25 12 21.25V22.75C17.9371 22.75 22.75 17.9371 22.75 12H21.25ZM12 21.25C6.89137 21.25 2.75 17.1086 2.75 12H1.25C1.25 17.9371 6.06294 22.75 12 22.75V21.25ZM2.75 12C2.75 6.89137 6.89137 2.75 12 2.75V1.25C6.06294 1.25 1.25 6.06294 1.25 12H2.75ZM15.5 14.25C12.3244 14.25 9.75 11.6756 9.75 8.5H8.25C8.25 12.5041 11.4959 15.75 15.5 15.75V14.25ZM20.4253 11.469C19.4172 13.1373 17.5882 14.25 15.5 14.25V15.75C18.1349 15.75 20.4407 14.3439 21.7092 12.2447L20.4253 11.469ZM9.75 8.5C9.75 6.41182 10.8627 4.5828 12.531 3.57467L11.7553 2.29085C9.65609 3.5593 8.25 5.86509 8.25 8.5H9.75ZM12 2.75C11.9115 2.75 11.8077 2.71008 11.7324 2.63168C11.6686 2.56527 11.6538 2.50244 11.6503 2.47703C11.6461 2.44587 11.6482 2.35557 11.7553 2.29085L12.531 3.57467C13.0342 3.27065 13.196 2.71398 13.1368 2.27627C13.0754 1.82126 12.7166 1.25 12 1.25V2.75ZM21.7092 12.2447C21.6444 12.3518 21.5541 12.3539 21.523 12.3497C21.4976 12.3462 21.4347 12.3314 21.3683 12.2676C21.2899 12.1923 21.25 12.0885 21.25 12H22.75C22.75 11.2834 22.1787 10.9246 21.7237 10.8632C21.286 10.804 20.7293 10.9658 20.4253 11.469L21.7092 12.2447Z"
-            fill="#1C274C" />
+            fill="#EDF6FD" />
         </svg>
       </div>
     </a>
@@ -393,24 +426,34 @@
 </body>
 <script>
   let isDarkMode = false;
-  function toggleDarkMode() {
+  function toggleDarkMode(event) {
+    event.preventDefault();
     const sun = document.querySelector('.sun-container')
     const moon = document.querySelector('.moon-container')
     if (isDarkMode) {
       document.documentElement.style.setProperty('--primary-color', 'var(--light-primary-color)')
       document.documentElement.style.setProperty('--secondary-color', 'var(--light-secondary-color)')
       document.documentElement.style.setProperty('--border-color', 'var(--light-border-color)')
+      document.documentElement.style.setProperty('--background-color', 'var(--light-background-color)')
+      document.documentElement.style.setProperty('--secondary-background-color', 'var(--light-secondary-background-color)')
+      document.documentElement.style.setProperty('--text-color', 'var(--light-text-color)')
+      document.documentElement.style.setProperty('--link-color', 'var(--light-link-color)')
       moon.classList.add('display-none')
       sun.classList.remove('display-none');
     } else {
       document.documentElement.style.setProperty('--primary-color', 'var(--dark-primary-color)')
       document.documentElement.style.setProperty('--secondary-color', 'var(--dark-secondary-color)')
       document.documentElement.style.setProperty('--border-color', 'var(--dark-border-color)')
+      document.documentElement.style.setProperty('--background-color', 'var(--dark-background-color)')
+      document.documentElement.style.setProperty('--secondary-background-color', 'var(--dark-secondary-background-color)')
+      document.documentElement.style.setProperty('--text-color', 'var(--dark-text-color)')
+      document.documentElement.style.setProperty('--link-color', 'var(--dark-link-color)')
       moon.classList.remove('display-none');
       sun.classList.add('display-none')
     }
     isDarkMode = !isDarkMode;
   }
+  document.querySelector('.dark-mode-button').onclick = toggleDarkMode;
 </script>
 
 </html>
