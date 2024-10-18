@@ -10,13 +10,40 @@
       --primary-color: #0472C3;
       --secondary-color: #EDF6FD;
       --border-color: #b5b5b5;
+
+      --light-primary-color: #0472C3;
+      --light-secondary-color: #EDF6FD;
+      --light-border-color: #b5b5b5;
+
+      --dark-primary-color: #00c181;
+      --dark-secondary-color: #5b5b5b;
+      --dark-border-color: #50f8bd;
     }
 
     body {
       display: flex;
+      flex-direction: column;
       margin-top: 6rem;
-      justify-content: center;
+      align-items: center;
       font-family: Sans-Serif;
+    }
+
+    .dark-mode-container {
+      width: 100%;
+    }
+
+    .dark-mode-button {
+      cursor: pointer;
+      transition: all;
+      transition-duration: 300ms;
+      margin-bottom: 1rem;
+      float: right;
+    }
+
+    .dark-mode-button:hover {
+      scale: 1.1;
+      transition: all;
+      transition-duration: 300ms;
     }
 
     header {
@@ -68,12 +95,20 @@
       fill: var(--primary-color);
     }
 
+    .display-none {
+      display: none;
+    }
+
     @media (min-width:940px) {
-      .paper {
+      .dark-mode-container {
         width: 8.5in;
-        height: 11in;
+      }
+
+      .paper {
+        width: 8in;
+        height: 10.7in;
         box-shadow: 0px 1px 8px var(--border-color);
-        padding: 0.3in 0.5in;
+        padding: 0.15in 0.25in;
       }
 
       header {
@@ -83,19 +118,34 @@
         border-bottom: 1px solid #b5b5b5;
       }
 
+      h1,
+      h2 {
+        text-align: left;
+      }
+
+      h3 {
+        text-align: left;
+        display: inline-block;
+        padding: 4px 5px;
+      }
+
+      .contact-info {
+        align-items: flex-end;
+      }
+
       main {
         display: flex;
-        gap: 1in;
       }
 
       .left-sections {
         position: relative;
-        max-width: 2.5in;
+        max-width: 3in;
+        margin-right: 1in;
       }
 
       .left-sections::after {
         position: absolute;
-        left:110px;
+        left: 110px;
         right: -60px;
         top: 33px;
         bottom: 0;
@@ -104,13 +154,15 @@
         border-right: 1px solid var(--border-color);
       }
 
-      .summary, .education, .work-history {
+      .summary,
+      .education,
+      .work-history {
         position: relative;
       }
 
       .summary::before {
         position: absolute;
-        left:110px;
+        left: 110px;
         right: -90px;
         top: 33px;
         content: '';
@@ -132,7 +184,7 @@
 
       .education::before {
         position: absolute;
-        left:120px;
+        left: 120px;
         right: -60px;
         top: 33px;
         content: '';
@@ -154,7 +206,7 @@
 
       .work-history::before {
         position: absolute;
-        left:155px;
+        left: 155px;
         right: -60px;
         top: 33px;
         content: '';
@@ -174,26 +226,42 @@
         z-index: 1;
       }
 
-      h1,
-      h2 {
-        text-align: left;
+      .relevant-skills-content {
+        padding-left: 5px;
       }
 
-      h3 {
-        text-align: left;
-        display: inline-block;
-        padding: 4px 5px;
+      .relevant-skills-content>h4:first-child {
+        margin-top: 0;
       }
-
-      .contact-info {
-        align-items: flex-end;
-      }
-
     }
   </style>
 </head>
 
 <body>
+  <div class='dark-mode-container'>
+    <a class='dark-mode-button' onclick='toggleDarkMode();'>
+      <div class="sun-container">
+        <svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="#1C274C" stroke-width="1.5" />
+          <path d="M12 2V4" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M12 20V22" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M4 12L2 12" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M22 12L20 12" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M19.7778 4.22266L17.5558 6.25424" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M4.22217 4.22266L6.44418 6.25424" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M6.44434 17.5557L4.22211 19.7779" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M19.7778 19.7773L17.5558 17.5551" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <div class="moon-container display-none">
+        <svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21.0672 11.8568L20.4253 11.469L21.0672 11.8568ZM12.1432 2.93276L11.7553 2.29085V2.29085L12.1432 2.93276ZM21.25 12C21.25 17.1086 17.1086 21.25 12 21.25V22.75C17.9371 22.75 22.75 17.9371 22.75 12H21.25ZM12 21.25C6.89137 21.25 2.75 17.1086 2.75 12H1.25C1.25 17.9371 6.06294 22.75 12 22.75V21.25ZM2.75 12C2.75 6.89137 6.89137 2.75 12 2.75V1.25C6.06294 1.25 1.25 6.06294 1.25 12H2.75ZM15.5 14.25C12.3244 14.25 9.75 11.6756 9.75 8.5H8.25C8.25 12.5041 11.4959 15.75 15.5 15.75V14.25ZM20.4253 11.469C19.4172 13.1373 17.5882 14.25 15.5 14.25V15.75C18.1349 15.75 20.4407 14.3439 21.7092 12.2447L20.4253 11.469ZM9.75 8.5C9.75 6.41182 10.8627 4.5828 12.531 3.57467L11.7553 2.29085C9.65609 3.5593 8.25 5.86509 8.25 8.5H9.75ZM12 2.75C11.9115 2.75 11.8077 2.71008 11.7324 2.63168C11.6686 2.56527 11.6538 2.50244 11.6503 2.47703C11.6461 2.44587 11.6482 2.35557 11.7553 2.29085L12.531 3.57467C13.0342 3.27065 13.196 2.71398 13.1368 2.27627C13.0754 1.82126 12.7166 1.25 12 1.25V2.75ZM21.7092 12.2447C21.6444 12.3518 21.5541 12.3539 21.523 12.3497C21.4976 12.3462 21.4347 12.3314 21.3683 12.2676C21.2899 12.1923 21.25 12.0885 21.25 12H22.75C22.75 11.2834 22.1787 10.9246 21.7237 10.8632C21.286 10.804 20.7293 10.9658 20.4253 11.469L21.7092 12.2447Z"
+            fill="#1C274C" />
+        </svg>
+      </div>
+    </a>
+  </div>
   <div class="paper">
     <header>
       <div>
@@ -258,67 +326,91 @@
         <section class="summary">
           <h3>SUMMARY</h3>
           <p>
-            I worked at Miriam Technologies for four years. I learned lots of things but most of all React! It was a
-            great
-            experience. I feel quite confident as a frontend developer. I am striving to build out my backend knowledge
-            so
-            that I can contribute at a company that is making a difference like, Patmos!
+            I have 4 years of React experience; self taught by plowing through the documentation, using the framework
+            and solving problems as they arose.
+            I loved the challenge. I primarily worked with React Class Components and used Mobx for state management.
+            At Miriam Technologies, we developed web and desktop applications for agricultural businesses.
+            My responsibilities were primarily on the frontend of the desktop application, which was an Electron app.
           </p>
         </section>
         <section class="education">
           <h3>EDUCATION</h3>
           <h4>Computer Science - Bachelor's of Science</h4>
-          <p>
-            University of Michigan - Dearborn | September 2011 - May 2016
-          </p>
+          <div>University of Michigan - Dearborn</div>
+          <div>September 2011 - May 2016</div>
         </section>
         <section class="work-history">
           <h3>WORK HISTORY</h3>
           <h4>Frontend Web Developer</h4>
-          <p>Miriam Technologies / St. John, WA (Remote) / 2020 - 2024</p>
+          <div>Miriam Technologies (2020 - 2024)</div>
+          <div>St. John, WA (Remote)</div>
         </section>
       </div>
       <section class="relevant-skills">
         <h3>Relevant Skills</h3>
-        <h4>React.js</h4>
-        <ul>
-          <li>Maintained an Electron application, implemented new features, fixed bugs, optimized performance</li>
-          <li>Implemented solutions with React Class Components and Mobx</li>
-          <li>Designed and implemented Switch and Route React components that integrated with Router from react-router.
-          </li>
-          <li>Used virtualization to resolve 20 second delay loading a table</li>
-          <li>Developed a unique PrintView component for the electron application</li>
-          <li>Built the frontend process to verify documents with signatures and notifications of success or omissions
-          </li>
-          <li>Added PDF Generation for the above mentioned verification and signing process</li>
-          <li>Maintained and updated repositories of UI components and models</li>
-          <li>Implemented UI/UX designs</li>
-          <li>Refined coding protocol with optional chaining</li>
-        </ul>
-        <h4>HTML, CSS, Javascript</h4>
-        <p>As shown in the source code for this resume:</p>
-        <ul>
-          <li>Semantic HTML</li>
-          <li>Responsive design</li>
-        </ul>
-        <h4>Jest and Testing Library</h4>
-        <ul>
-          <li>Unit Tests</li>
-          <li>Integration Tests</li>
-        </ul>
-        <h4>Git</h4>
-        <ul>
-          <li>Proficient in standard commands. (status, add, commit, push, pull)</li>
-          <li>Able to use reflog to undo catastrophic merges/rebases</li>
-          <li>Able to use rebase -i for rearranging, editing, squashing commits</li>
-        </ul>
-        <h4>Ruby on Rails</h4>
-        <ul>
-          <li>Able to create CRUD apis</li>
-        </ul>
+        <div class="relevant-skills-content">
+          <h4>React.js</h4>
+          <ul>
+            <li>Maintained an Electron application, implemented new features, fixed bugs, optimized performance</li>
+            <li>Implemented solutions with React Class Components and Mobx</li>
+            <li>Designed and implemented Switch and Route React components that integrated with Router from
+              react-router.
+            </li>
+            <li>Used virtualization to resolve 20 second delay loading a table</li>
+            <li>Developed a unique PrintView component for the electron application</li>
+            <li>Built the frontend process to verify documents with signatures and notifications of success or omissions
+            </li>
+            <li>Added PDF Generation for the above mentioned verification and signing process</li>
+            <li>Maintained and updated repositories of UI components and models</li>
+            <li>Implemented UI/UX designs</li>
+            <li>Refined coding protocol with optional chaining</li>
+          </ul>
+          <h4>HTML, CSS, Javascript</h4>
+          <span>As shown in the source code for this resume</span>
+          <ul>
+            <li>Semantic HTML</li>
+            <li>Responsive design</li>
+          </ul>
+          <h4>Jest and Testing Library</h4>
+          <ul>
+            <li>Unit Tests</li>
+            <li>Integration Tests</li>
+          </ul>
+          <h4>Git</h4>
+          <ul>
+            <li>Proficient in standard commands. (status, add, commit, push, pull)</li>
+            <li>Able to use reflog to undo catastrophic merges/rebases</li>
+            <li>Able to use rebase -i for rearranging, editing, squashing commits</li>
+          </ul>
+          <h4>Ruby on Rails</h4>
+          <ul>
+            <li>Able to create CRUD apis</li>
+          </ul>
+        </div>
       </section>
     </main>
   </div>
 </body>
+<script>
+  let isDarkMode = false;
+  function toggleDarkMode() {
+    const sun = document.querySelector('.sun-container')
+    const moon = document.querySelector('.moon-container')
+    if (isDarkMode) {
+      document.documentElement.style.setProperty('--primary-color', 'var(--light-primary-color)')
+      document.documentElement.style.setProperty('--secondary-color', 'var(--light-secondary-color)')
+      document.documentElement.style.setProperty('--border-color', 'var(--light-border-color)')
+      moon.classList.add('display-none')
+      sun.classList.remove('display-none');
+    } else {
+      document.documentElement.style.setProperty('--primary-color', 'var(--dark-primary-color)')
+      document.documentElement.style.setProperty('--secondary-color', 'var(--dark-secondary-color)')
+      document.documentElement.style.setProperty('--border-color', 'var(--dark-border-color)')
+      moon.classList.remove('display-none');
+      sun.classList.add('display-none')
+    }
+    isDarkMode = !isDarkMode;
+  }
+</script>
 
 </html>
