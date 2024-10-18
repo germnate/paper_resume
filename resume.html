@@ -68,8 +68,8 @@
 
     @media (min-width:940px) {
       .paper {
-        min-width: 8.5in;
-        min-height: 11in;
+        width: 8.5in;
+        height: 11in;
         box-shadow: 0px 1px 8px black;
         padding: 0.3in 0.5in;
       }
@@ -80,6 +80,16 @@
         padding-bottom: 0.2in;
         border-bottom: 1px solid #b5b5b5;
       }
+
+      h1,
+      h2 {
+        text-align: left;
+      }
+
+      .contact-info {
+        align-items: flex-end;
+      }
+
     }
   </style>
 </head>
@@ -144,65 +154,71 @@
         </div>
       </div>
     </header>
-    <section>
-      <h3>SUMMARY</h3>
-      <p>
-        I worked at Miriam Technologies for four years. I learned lots of things but most of all React! It was a great
-        experience. I feel quite confident as a frontend developer. I am striving to build out my backend knowledge so
-        that I can contribute at a company that is making a difference like, Patmos!
-      </p>
-    </section>
-    <section>
-      <h3>EDUCATION</h3>
-      <h4>Computer Science - Bachelor's of Science</h4>
-      <p>
-        University of Michigan - Dearborn | September 2011 - May 2016
-      </p>
-    </section>
-    <section>
-      <h3>WORK HISTORY</h3>
-      <h4>Frontend Web Developer</h4>
-      <p>Miriam Technologies / St. John, WA (Remote) / 2020 - 2024</p>
-    </section>
-    <section>
-      <h3>Relevant Skills</h3>
-      <h4>React.js</h4>
-      <ul>
-        <li>Maintained an Electron application, implemented new features, fixed bugs, optimized performance</li>
-        <li>Implemented solutions with React Class Components and Mobx</li>
-        <li>Designed and implemented Switch and Route React components that integrated with Router from react-router.
-        </li>
-        <li>Used virtualization to resolve 20 second delay loading a table</li>
-        <li>Developed a unique PrintView component for the electron application</li>
-        <li>Built the frontend process to verify documents with signatures and notifications of success or omissions
-        </li>
-        <li>Added PDF Generation for the above mentioned verification and signing process</li>
-        <li>Maintained and updated repositories of UI components and models</li>
-        <li>Implemented UI/UX designs</li>
-        <li>Refined coding protocol with optional chaining</li>
-      </ul>
-      <h4>HTML, CSS, Javascript</h4>
-      <p>As shown in the source code for this resume:</p>
-      <ul>
-        <li>Semantic HTML</li>
-        <li>Responsive design</li>
-      </ul>
-      <h4>Jest and Testing Library</h4>
-      <ul>
-        <li>Unit Tests</li>
-        <li>Integration Tests</li>
-      </ul>
-      <h4>Git</h4>
-      <ul>
-        <li>Proficient in standard commands. (status, add, commit, push, pull)</li>
-        <li>Able to use reflog to undo catastrophic merges/rebases</li>
-        <li>Able to use rebase -i for rearranging, editing, squashing commits</li>
-      </ul>
-      <h4>Ruby on Rails</h4>
-      <ul>
-        <li>Able to create CRUD apis</li>
-      </ul>
-    </section>
+    <main>
+      <div class="left-sections">
+        <section class="summary">
+          <h3>SUMMARY</h3>
+          <p>
+            I worked at Miriam Technologies for four years. I learned lots of things but most of all React! It was a
+            great
+            experience. I feel quite confident as a frontend developer. I am striving to build out my backend knowledge
+            so
+            that I can contribute at a company that is making a difference like, Patmos!
+          </p>
+        </section>
+        <section class="education">
+          <h3>EDUCATION</h3>
+          <h4>Computer Science - Bachelor's of Science</h4>
+          <p>
+            University of Michigan - Dearborn | September 2011 - May 2016
+          </p>
+        </section>
+        <section class="work-history">
+          <h3>WORK HISTORY</h3>
+          <h4>Frontend Web Developer</h4>
+          <p>Miriam Technologies / St. John, WA (Remote) / 2020 - 2024</p>
+        </section>
+      </div>
+      <section class="relevant-skills">
+        <h3>Relevant Skills</h3>
+        <h4>React.js</h4>
+        <ul>
+          <li>Maintained an Electron application, implemented new features, fixed bugs, optimized performance</li>
+          <li>Implemented solutions with React Class Components and Mobx</li>
+          <li>Designed and implemented Switch and Route React components that integrated with Router from react-router.
+          </li>
+          <li>Used virtualization to resolve 20 second delay loading a table</li>
+          <li>Developed a unique PrintView component for the electron application</li>
+          <li>Built the frontend process to verify documents with signatures and notifications of success or omissions
+          </li>
+          <li>Added PDF Generation for the above mentioned verification and signing process</li>
+          <li>Maintained and updated repositories of UI components and models</li>
+          <li>Implemented UI/UX designs</li>
+          <li>Refined coding protocol with optional chaining</li>
+        </ul>
+        <h4>HTML, CSS, Javascript</h4>
+        <p>As shown in the source code for this resume:</p>
+        <ul>
+          <li>Semantic HTML</li>
+          <li>Responsive design</li>
+        </ul>
+        <h4>Jest and Testing Library</h4>
+        <ul>
+          <li>Unit Tests</li>
+          <li>Integration Tests</li>
+        </ul>
+        <h4>Git</h4>
+        <ul>
+          <li>Proficient in standard commands. (status, add, commit, push, pull)</li>
+          <li>Able to use reflog to undo catastrophic merges/rebases</li>
+          <li>Able to use rebase -i for rearranging, editing, squashing commits</li>
+        </ul>
+        <h4>Ruby on Rails</h4>
+        <ul>
+          <li>Able to create CRUD apis</li>
+        </ul>
+      </section>
+    </main>
   </div>
 </body>
 
