@@ -9,6 +9,7 @@
     :root {
       --primary-color: #0472C3;
       --secondary-color: #EDF6FD;
+      --border-color: #b5b5b5;
     }
 
     body {
@@ -20,7 +21,7 @@
 
     header {
       padding-bottom: 0.2in;
-      border-bottom: 1px solid #b5b5b5;
+      border-bottom: 1px solid var(--border-color)
     }
 
     h1,
@@ -34,6 +35,7 @@
     h3 {
       background-color: var(--secondary-color);
       padding: 3px;
+      margin-bottom: 0;
       text-align: center;
     }
 
@@ -70,7 +72,7 @@
       .paper {
         width: 8.5in;
         height: 11in;
-        box-shadow: 0px 1px 8px black;
+        box-shadow: 0px 1px 8px var(--border-color);
         padding: 0.3in 0.5in;
       }
 
@@ -81,9 +83,106 @@
         border-bottom: 1px solid #b5b5b5;
       }
 
+      main {
+        display: flex;
+        gap: 1in;
+      }
+
+      .left-sections {
+        position: relative;
+        max-width: 2.5in;
+      }
+
+      .left-sections::after {
+        position: absolute;
+        left:110px;
+        right: -60px;
+        top: 33px;
+        bottom: 0;
+        content: '';
+        display: block;
+        border-right: 1px solid var(--border-color);
+      }
+
+      .summary, .education, .work-history {
+        position: relative;
+      }
+
+      .summary::before {
+        position: absolute;
+        left:110px;
+        right: -90px;
+        top: 33px;
+        content: '';
+        display: block;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .summary::after {
+        position: absolute;
+        content: '';
+        height: 15px;
+        width: 15px;
+        top: 27px;
+        right: -67px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .education::before {
+        position: absolute;
+        left:120px;
+        right: -60px;
+        top: 33px;
+        content: '';
+        display: block;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .education::after {
+        position: absolute;
+        content: '';
+        height: 15px;
+        width: 15px;
+        top: 27px;
+        right: -67px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .work-history::before {
+        position: absolute;
+        left:155px;
+        right: -60px;
+        top: 33px;
+        content: '';
+        display: block;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .work-history::after {
+        position: absolute;
+        content: '';
+        height: 15px;
+        width: 15px;
+        top: 27px;
+        right: -67px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        z-index: 1;
+      }
+
       h1,
       h2 {
         text-align: left;
+      }
+
+      h3 {
+        text-align: left;
+        display: inline-block;
+        padding: 4px 5px;
       }
 
       .contact-info {
